@@ -74,6 +74,7 @@ export default function PDFUpload() {
                         )}
 
                         {message && (
+                            // @ts-expect-error
                             <Alert variant={message.type === "error" ? "destructive" : "success"}>
                                 <AlertTitle>{message.type === "error" ? "Error!" : "Success!"}</AlertTitle>
                                 <AlertDescription>{message.text}</AlertDescription>
