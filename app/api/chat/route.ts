@@ -2,6 +2,7 @@ import { streamText, UIMessage, convertToModelMessages, tool, InferUITools, UIDa
 import { google } from "@ai-sdk/google";
 import { z } from "zod"
 import { searchDocuments } from "@/lib/search";
+import { resumeProfileContext } from "@/lib/profile";
 
 const tools = {
     searchKnowledgeBase: tool({
@@ -41,8 +42,12 @@ export async function POST(req: Request) {
             model: google("gemini-3-flash-preview"),
             messages: await convertToModelMessages(messages),
             tools,
-            system: `You are a helpful assistant with access to a knowledge base.
-            when users ask questions, search the knowledge base for relevant information.
+            system: `You are a helpful resume assistant. The verified predefined profile is below:
+
+            ${resumeProfileContext}
+
+            Answer questions about the profile using this information. Never invent missing resume details; say when a detail has not been provided.
+            You also have access to uploaded documents. When users ask questions that might relate to uploaded documents, search the knowledge base for relevant information.
             Always search before answering if the question might relate to uploaded documents.
             Base your answers on the search results when available.
             After receiving search results, answer the user directly and do not search again for the same request.
