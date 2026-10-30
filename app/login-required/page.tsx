@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/button";
 
 function LoginRequiredContent() {
     const searchParams = useSearchParams();
-    const redirect = searchParams.get("redirect") || "/";
+    const requested = searchParams.get("redirect");
+    const redirect = requested?.startsWith("/") && !requested.startsWith("//") ? requested : "/";
     const signInUrl = redirect === "/" ? "/sign-in" : `/sign-in?redirect_url=${encodeURIComponent(redirect)}`;
     const signUpUrl = redirect === "/" ? "/sign-up" : `/sign-up?redirect_url=${encodeURIComponent(redirect)}`;
 
@@ -26,7 +27,7 @@ function LoginRequiredContent() {
                 </h1>
 
                 <p className="mt-4 text-base leading-7 text-muted-foreground">
-                    You need to sign in or create an account to use the Chat and PDF Upload features.
+                    You need to sign in or create an account to use this feature.
                 </p>
 
                 <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
@@ -64,7 +65,7 @@ export default function LoginRequiredPage() {
                             Login Required
                         </h1>
                         <p className="mt-4 text-base leading-7 text-muted-foreground">
-                            You need to sign in or create an account to use the Chat and PDF Upload features.
+                            You need to sign in or create an account to use this feature.
                         </p>
                     </div>
                 </PageContainer>

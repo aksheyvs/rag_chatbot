@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
     title: "RAG Chatbot",
-    description: "AI-powered resume and PDF assistant",
+    description: "AI-powered resume assistant",
 };
 
 export default function RootLayout({

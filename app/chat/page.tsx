@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, Fragment } from "react";
-import Link from "next/link";
 import { useChat } from "@ai-sdk/react";
-import { ArrowUpRight, Bot, FileText, Loader2, Sparkles } from "lucide-react";
+import { ArrowUpRight, Bot, Loader2, Sparkles } from "lucide-react";
 import Markdown from "react-markdown";
 
 import {
@@ -17,7 +16,6 @@ import { Message, MessageContent } from "@/components/ai-elements/message";
 import { Conversation, ConversationContent, ConversationScrollButton } from "@/components/ai-elements/conversation";
 import { AuthGuard } from "@/components/auth-guard";
 import { PageContainer } from "@/components/page-shell";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 const sampleQuestions = [
@@ -58,12 +56,6 @@ export default function RAGChatBot() {
                             Ask questions about my background
                         </h1>
                     </div>
-                    <Button asChild variant="outline" className="w-fit">
-                        <Link href="/upload">
-                            <FileText className="size-4" />
-                            Upload a PDF
-                        </Link>
-                    </Button>
                 </div>
 
                 <div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">

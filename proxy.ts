@@ -3,6 +3,10 @@ import { NextResponse } from 'next/server';
 
 const isPublicRoute = createRouteMatcher(["/", "/login-required(.*)", "/sign-in(.*)", "/sign-up(.*)"]);
 const isProtectedRoute = createRouteMatcher(["/chat(.*)", "/upload(.*)"]);
+const isLoginRequiredRoute = createRouteMatcher(["/login-required(.*)"]);
+
+// Only allow same-site paths so the redirect param can't send users off-site.
+const safeRedirect = (value: string | null) => (value?.startsWith("/") && !value.startsWith("//") ? value : "/");
 
 export default clerkMiddleware(async (auth, req) => {
     const { userId } = await auth();
@@ -11,6 +15,10 @@ export default clerkMiddleware(async (auth, req) => {
         const redirectUrl = new URL('/login-required', req.url);
         redirectUrl.searchParams.set('redirect', req.nextUrl.pathname);
         return NextResponse.redirect(redirectUrl);
+    }
+
+    if (isLoginRequiredRoute(req) && userId) {
+        return NextResponse.redirect(new URL(safeRedirect(req.nextUrl.searchParams.get('redirect')), req.url));
     }
 
     if (isPublicRoute(req)) {

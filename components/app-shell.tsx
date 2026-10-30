@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { SignInButton, SignOutButton, SignUpButton, useAuth } from "@clerk/nextjs";
-import { FileText, House, MessageSquareText, Sparkles } from "lucide-react";
+import { House, MessageSquareText, Sparkles } from "lucide-react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 const navItems = [
     { href: "/", label: "Home", icon: House },
     { href: "/chat", label: "Chat", icon: MessageSquareText },
-    { href: "/upload", label: "Upload PDF", icon: FileText },
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -101,9 +100,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                         </Link>
                         <Link href="/chat" className="transition-colors hover:text-foreground">
                             Chat
-                        </Link>
-                        <Link href="/upload" className="transition-colors hover:text-foreground">
-                            Upload PDF
                         </Link>
                     </div>
                 </div>

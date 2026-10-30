@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, FileText, MessageSquareText, Search, Sparkles } from "lucide-react";
+import { ArrowRight, MessageSquareText, Search, Sparkles } from "lucide-react";
 
 import { PageContainer } from "@/components/page-shell";
 import { Button } from "@/components/ui/button";
@@ -12,9 +12,9 @@ const features = [
         description: "Ask questions about my skills, projects, education and career background.",
     },
     {
-        icon: FileText,
-        title: "PDF Intelligence",
-        description: "Upload a PDF and ask questions about its contents with AI-powered retrieval.",
+        icon: Search,
+        title: "Grounded Answers",
+        description: "Responses are retrieved directly from my resume, so answers stay accurate and relevant.",
     },
 ];
 
@@ -30,11 +30,11 @@ export default function Home() {
                             AI knowledge assistant
                         </div>
                         <h1 className="max-w-xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                            Chat with your knowledge.
+                            Chat with my resume.
                         </h1>
                         <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
-                            Ask questions about my resume, skills and projects, or upload a PDF and explore its contents
-                            with AI-powered document search.
+                            Ask questions about my skills, projects, education and experience, and get answers powered
+                            by AI-driven search over my resume.
                         </p>
 
                         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -43,9 +43,6 @@ export default function Home() {
                                     Chat with My Resume
                                     <ArrowRight className="size-4" />
                                 </Link>
-                            </Button>
-                            <Button asChild variant="outline" size="lg">
-                                <Link href="/upload">Upload a PDF</Link>
                             </Button>
                         </div>
                     </div>
@@ -91,7 +88,7 @@ export default function Home() {
                             Capabilities
                         </p>
                         <h2 className="mt-2 text-3xl font-semibold tracking-tight text-foreground">
-                            Built for your work and documents
+                            Get to know my background
                         </h2>
                     </div>
                 </div>
